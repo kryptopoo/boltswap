@@ -1,9 +1,14 @@
 {
   "name": "boltswap-interface",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "engines": {
+		"node": "14.x",
+		"npm": "6.x"
+	  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "heroku-postbuild": "ng build --prod",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -22,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "ethers": "^5.6.2",
+    "express": "^4.17.3",
     "firebase": "^9.6.10",
     "material-icons": "^1.10.8",
     "rxjs": "~6.6.0",

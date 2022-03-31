@@ -1,0 +1,40 @@
+<!-- header -->
+<div class="flex justify-center">
+    <div class="w-2/3 flex flex-col m-4">
+        <div class="w-full flex items-center justify-between h-24">
+            <div>
+                <div class="text-3xl my-1">Provide liquidity & earn.</div>
+                <div class="text-neutral-400">Earn LP fees by depositing tokens to the platform.</div>
+            </div>
+            <div>
+                <button class="btn-green p-2" [routerLink]="['/pool/create']">Create Pool</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flex justify-center" style="height: max-content;">
+    <div class="w-2/3 flex flex-col mb-8">
+        <div>
+            <div class="text-xl py-3">Liquidity Pools</div>
+            <div>
+                <div class="flex items-center border border-neutral-700 rounded-t-md p-2">
+                    <div class="w-60">Assets</div>
+                    <div class="w-[28rem]">Address</div>
+                    <div class="w-10">Fee</div>
+                </div>
+                <div *ngFor="let pool of pools" class="flex items-center border border-neutral-700 p-2">
+                    <div class="w-60 flex items-center">
+                        <div><img class="m-1 rounded-full w-10 h-10" [src]="pool.token1.logoURI" /></div>
+                        <div class="-ml-6"><img class="m-1 rounded-full w-10 h-10" [src]="pool.token2.logoURI" /></div>
+                        <div class="ml-2 text-lg font-medium text-high-emphesis">{{pool.name}}</div>
+                    </div>
+                    <div class="w-[28rem]">{{pool.pairAddress}}</div>
+                    <div class="w-16">{{pool.fee}}</div>
+                </div>
+                <div class="border border-neutral-700 rounded-b-md">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

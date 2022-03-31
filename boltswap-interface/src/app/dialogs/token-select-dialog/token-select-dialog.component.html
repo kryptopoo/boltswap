@@ -1,0 +1,30 @@
+<div class="min-h-[40vh] max-h-[85vh] p-2 border border-neutral-800 bg-neutral-800">
+    <div class="flex items-start justify-between my-4 mx-1">
+        <div class="text-base text-high-emphesis font-bold">Select token</div>
+        <div mat-dialog-close class="flex items-center justify-center w-8 h-8 cursor-pointer text-center">
+            <i class="material-icons w-8 h-8">close</i>
+        </div>
+    </div>
+
+    <div class="my-4">
+        <input type="text" id="token-search-input" placeholder="Search name or paste address" autocomplete="off"
+            class="w-full bg-neutral-900 border border-neutral-700 rounded-lg font-bold text-base p-4 appearance-none"
+            value="" tabindex="0">
+    </div>
+    <div class="my-4 border border-neutral-700 bg-neutral-900 rounded-lg flex flex-col flex-1 flex-grow min-h-[50vh] lg:min-h-fit overflow-hidden h-full divide-y divide-neutral-800">
+        <div class="flex gap-3 items-center justify-between hover:bg-neutral-800 hover:cursor-pointer px-4 py-4" 
+            *ngFor="let token of data.tokens">
+            <div class="flex items-center" (click)="selectToken(token)">
+                <img [src]="token.logoURI" class="rounded-full w-10 h-10 mr-2" />
+                <div class="w-72">
+                    <div class="text-xs text-neutral-400">{{token.name}}</div>
+                    <div class="text-base font-semibold">{{token.symbol}}</div>
+                </div>
+            </div>
+
+            <div class="text-neutral-400">
+                {{token.balance}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'material-icons/iconfont/material-icons.css';
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    // font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-family: var(--font-sans);
+    background-color: rgb(23, 23, 23);
+    color: rgb(250 250 250);
+}
+
+.bg-green {
+    background-color: rgb(105, 240, 174);
+}
+
+.border-green {
+    border-color: rgb(105, 240, 174);
+}
+
+.text-green {
+    color: #69f0ae;
+}
+
+.btn-neutral-dark {
+    @apply bg-neutral-800 rounded-xl text-sm text-neutral-100 px-4 opacity-80 hover:opacity-100 hover:cursor-pointer;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+.btn-neutral {
+    @apply bg-neutral-800 rounded-xl cursor-pointer px-4;
+    &:hover {
+        background-color: #69f0ae;
+        color: rgb(23 23 23);
+        cursor: pointer;
+    }
+}
+
+.btn-green {
+    @apply bg-green rounded-xl text-black text-sm px-4;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+.btn-orange {
+    @apply bg-orange-500 rounded-3xl text-neutral-100 px-4;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+.mat-dialog-container {
+    background-color: rgb(38 38 38);
+}
+
+// input {border:0;outline:0;}
+// input:focus {outline:none!important;}
+
+.input-amount {
+    @apply text-2xl font-bold outline-none border-none overflow-hidden overflow-ellipsis w-full bg-transparent disabled:cursor-not-allowed;
+}
+
+input[type='text']:focus {
+    border: 0;
+    outline: 0;
+}
+
+.btn-menu {
+    @apply w-28 h-9 flex items-center justify-center border rounded-2xl border-neutral-800  bg-neutral-800 cursor-pointer;
+
+    &:hover {
+        background-color: #69f0ae;
+        color: rgb(23 23 23);
+    }
+}
+
+.text-high-emphesis {
+    --tw-text-opacity: 1;
+    color: rgb(227 227 227 / var(--tw-text-opacity));
+}
+
+.mat-dialog-container {
+    padding: 0 !important;
+    width: auto !important;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    background-color: rgb(0, 0, 0, 0.8) !important;
+}
+
+.mat-spinner {
+    ::ng-deep circle {
+        stroke: #bada55;
+    }
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: rgb(64 64 64) !important;
+}
+
+.active-link {
+    border: 1px solid #69f0ae;
+}

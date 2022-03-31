@@ -1,0 +1,193 @@
+<div class="flex justify-center" style="height: max-content;">
+    <div class="w-2/3 flex flex-col p-2">
+        <div class="flex items-center justify-between">
+            <div>
+                <div class="text-sm text-high-emphesis py-1">Select Two Assets</div>
+                <div class="w-9/12 text-xs text-neutral-400">Please select the two assets that this pool will consist of.
+                    When creating a pair,
+                    you are
+                    the first liquidity provider. Please note that the ratio of tokens you add will set the price of
+                    this pool.</div>
+            </div>
+            <div>
+                <button class="btn-neutral flex items-center py-1 w-28" [routerLink]="['/pool']">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                    <div>Pools</div>
+                </button>
+            </div>
+        </div>
+        <div class="py-3">
+            <div class="max-w-lg w-full">
+                <div class="relative w-full max-w-2xl">
+                    <div class="relative filter z-10">
+                        <div
+                            class="flex flex-col gap-3 p-2 md:p-4 pt-4 rounded-md bg-neutral-800 shadow-md shadow-neutral-900">
+                            <!-- head -->
+                            <div class="flex items-center justify-between px-1">
+                                <div class="flex items-center gap-4">
+                                    <button
+                                        class="text-lg font-semibold text-neutral-400 hover:text-neutral-100">Liquidity</button>
+                                </div>
+                                <div>
+                                    <button data-dropdown-toggle="settings" data-dropdown-placement="left-start"><i
+                                            class="material-icons">settings</i></button>
+
+                                    <!-- settings menu -->
+                                    <div id="settings" class="hidden z-10 -mr-10">
+                                        <div
+                                            class="flex flex-col gap-3 p-3 border rounded shadow-xl bg-neutral-900 w-80 border-neutral-700">
+                                            <div class="flex flex-col gap-4 p-3 border rounded border-neutral-800/60">
+                                                <div class="text-[0.625rem] font-bold text-neutral-400">Transaction
+                                                    Settings
+                                                </div>
+
+                                                <div class="flex flex-col gap-4">
+                                                    <div class="grid gap-2">
+                                                        <div class="flex items-center">
+                                                            <div class="text-xs font-bold ">Slippage tolerance</div>
+                                                        </div>
+                                                        <div class="flex items-center space-x-2">
+                                                            <div class="border-neutral-800 hover:border-green-400 border-2 h-9 flex items-center px-2 rounded"
+                                                                tabindex="-1">
+                                                                <div class="flex items-center justify-between gap-1">
+                                                                    <input
+                                                                        class="bg-transparent min-w-0 w-full font-bold"
+                                                                        color="" autocomplete="off" value="0.50">%
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <button
+                                                                    class="btn-green opacity-70 text-sm py-1">Auto</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid gap-2">
+                                                        <div class="flex items-center">
+                                                            <div class="text-xs font-bold">Transaction deadline</div>
+                                                        </div>
+                                                        <div class="flex items-center gap-2">
+                                                            <div
+                                                                class="border-neutral-800 hover:border-green-400 border-2 w-24 h-9 flex items-center px-2 rounded">
+                                                                <input class="bg-transparent min-w-0 w-full font-bold"
+                                                                    placeholder="30" color="" value="">
+                                                            </div>
+
+                                                            <div class="text-sm font-bold text-neutral-400">minutes
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- from token -->
+                            <div
+                                class="border-neutral-800 hover:border-neutral-700 rounded-md border bg-neutral-900 p-3 flex flex-col gap-4">
+                                <div class="flex items-center justify-between gap-2">
+                                    <div (click)="selectFromToken()"
+                                        class="flex items-center bg-neutral-800 hover:bg-neutral-700 cursor-pointer gap-2 px-2 py-1 rounded-full shadow-md">
+                                        <div><img class="m-1 rounded-full w-6 h-6"
+                                                [src]="liquidityData.token1.logoURI" />
+                                        </div>
+                                        <div>{{liquidityData.token1.symbol}}</div>
+                                        <div class=""><i class="material-icons m-1">keyboard_arrow_down</i></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 justify-between items-center">
+                                    <div class="flex items-baseline flex-grow gap-3 overflow-hidden">
+                                        <input inputmode="decimal" title="Token Amount" autocomplete="off"
+                                            autocorrect="off" type="text" pattern="^[0-9]*[.,]?[0-9]*$"
+                                            placeholder="0.00" min="0" minlength="1" maxlength="79" spellcheck="false"
+                                            class="input-amount" value="0" [(ngModel)]="liquidityData.token1.amount">
+                                    </div>
+                                    <div
+                                        class="text-sm font-medium cursor-pointer select-none flex text-neutral-400 whitespace-nowrap">
+                                        {{liquidityData.token1.balance}}</div>
+                                </div>
+                            </div>
+
+                            <div class="z-0 flex justify-center -mt-6 -mb-6">
+                                <div role="button"
+                                    class="w-8 h-8 p-1 rounded-full bg-neutral-800 border shadow-md border-neutral-700 hover:border-neutral-600">
+                                    <i class="material-icons">add</i>
+                                </div>
+                            </div>
+
+                            <!-- to token -->
+                            <div
+                                class="border-neutral-800 hover:border-neutral-700 rounded-md border bg-neutral-900 p-3 flex flex-col gap-4">
+                                <div class="flex items-center justify-between gap-2">
+                                    <div (click)="selectToToken()"
+                                        class="flex items-center bg-neutral-800 hover:bg-neutral-700 cursor-pointer gap-2 px-2 py-1 rounded-full shadow-md">
+                                        <div><img class="m-1 rounded-full w-6 h-6"
+                                                [src]="liquidityData.token2.logoURI" />
+                                        </div>
+                                        <div>{{liquidityData.token2.symbol}}</div>
+                                        <div class=""><i class="material-icons m-1">keyboard_arrow_down</i></div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 justify-between items-center">
+                                    <div class="flex items-baseline flex-grow gap-3 overflow-hidden">
+                                        <input inputmode="decimal" title="Token Amount" autocomplete="off"
+                                            autocorrect="off" type="text" pattern="^[0-9]*[.,]?[0-9]*$"
+                                            placeholder="0.00" min="0" minlength="1" maxlength="79" spellcheck="false"
+                                            class="input-amount" value="0" [(ngModel)]="liquidityData.token2.amount">
+                                    </div>
+                                    <div
+                                        class="text-sm font-medium cursor-pointer select-none flex text-neutral-400 whitespace-nowrap">
+                                        {{liquidityData.token2.balance}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="pb-3">
+            <div class="text-sm text-high-emphesis py-1">Liquidity Provider Rewards</div>
+            <div class="w-9/12 text-xs text-neutral-400">Liquidity providers earn a 0.25% fee on all trades proportional
+                to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by
+                withdrawing your liquidity</div>
+        </div>
+
+        <div class="flex items-center gap-4 py-2">
+            <button mat-flat-button color="accent" class="w-[15.5rem] h-12 font-medium "
+                [disabled]="!liquidityData.token1.address || !liquidityData.token1.amount"
+                (click)="approveToken(liquidityData.token1)">
+                <div class="flex items-center justify-center">
+                    <mat-spinner class="mr-2" strokeWidth="3" [diameter]="24"
+                        *ngIf="liquidityData.progress.approving.indexOf(liquidityData.token1.symbol) > -1">
+                    </mat-spinner>
+                    <div> Approve {{liquidityData.token1.symbol}}</div>
+                </div>
+            </button>
+            <button mat-flat-button color="accent" class="w-[15.5rem] h-12 font-medium"
+                [disabled]="liquidityData.token2.address == null || !liquidityData.token2.amount"
+                (click)="approveToken(liquidityData.token2)">
+                <div class="flex items-center justify-center">
+                    <mat-spinner class="mr-2" strokeWidth="3" [diameter]="24"
+                        *ngIf="liquidityData.progress.approving.indexOf(liquidityData.token2.symbol) > -1">
+                    </mat-spinner>
+                    <div> Approve {{liquidityData.token2.symbol}}</div>
+                </div>
+            </button>
+        </div>
+        <div class="flex items-center gap-2 py-2">
+            <button mat-flat-button color="warn" class="w-[32rem] h-12 font-medium"
+                [disabled]="liquidityData.progress.approved.indexOf(liquidityData.token1.symbol) < 0 
+                         || liquidityData.progress.approved.indexOf(liquidityData.token2.symbol) < 0"
+                (click)="addLiquidity()">
+                <div class="flex items-center justify-center">
+                    <mat-spinner class="mr-2" strokeWidth="3" [diameter]="24"
+                        *ngIf="liquidityData.progress.supplying">
+                    </mat-spinner>
+                    <div>Supply</div>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

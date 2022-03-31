@@ -1,0 +1,73 @@
+<div class="flex items-center">
+
+    <button (click)="openConnectDialog()" class="btn-neutral w-40 h-9 py-2 px-4 text-sm flex items-center"
+        *ngIf="address == null">
+        <i class="material-icons mr-1">account_balance_wallet</i>Connect wallet
+    </button>
+    <button (click)="openWalletDialog()" class="btn-neutral w-40 h-9 py-2 px-4 text-sm flex items-center"
+        *ngIf="address != null">
+        <i class="material-icons mr-1">account_balance_wallet</i>{{ shortAddress }}
+    </button>
+
+</div>
+
+
+<ng-template #walletDialogRef>
+    <div class="p-6">
+        <div class="flex items-start justify-between mb-4">
+            <div class="text-2xl">Wallet</div>
+            <div mat-dialog-close>
+                <i class="material-icons rounded-full p-1 hover:cursor-pointer hover:bg-neutral-900">close</i>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex flex-col">
+                <div class="flex items-center mb-2">
+                    <i class="material-icons mr-4">account_balance_wallet</i>
+                    <div class="w-16 mr-3">Address:</div>
+                    <div>{{ address }}</div>
+                </div>
+                <div class="flex items-center mb-2">
+                    <i class="material-icons mr-4">attach_money</i>
+                    <div>{{ balance.toFixed(4) }} {{currency}}</div>
+                </div>
+                <!-- <div class="flex items-center mb-2">
+                    <i class="material-icons mr-4">wifi</i>
+                    <div class="w-16 mr-3">Network:</div>
+                    <div>{{ network }}</div>
+                </div> -->
+
+                <div class="mt-2 flex justify-end text-sm">
+                    <button (click)="disconnect()" mat-dialog-close
+                        class="w-28 bg-red-600 text-white shadow rounded-full flex items-center justify-center p-2 ml-1">
+                        Disconnect
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #connectDialogRef>
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-2">
+            <div class="text-2xl">Connect wallet</div>
+            <div mat-dialog-close>
+                <i class="material-icons rounded-full p-1 hover:cursor-pointer hover:bg-neutral-900">close</i>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <div class="flex items-center justify-between w-96 p-3 hover:bg-neutral-900 hover:rounded hover:cursor-pointer"
+                (click)="connect()" mat-dialog-close>
+                <div class="flex">
+                    <img class="w-16 h-16" src="/assets/images/metamask.svg" />
+                    <div class="m-4 text-xl">Metamask</div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-sm font-thin">Make sure that Metamask installed on your browser</div>
+        </div>
+    </div>
+</ng-template>

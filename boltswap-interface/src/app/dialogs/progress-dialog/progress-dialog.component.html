@@ -1,0 +1,22 @@
+<div class="p-4 border border-neutral-800 bg-neutral-800">
+    <div *ngIf="data.isProcessed">
+        <div class="flex items-center justify-center mb-4">
+            <i class="material-icons text-8xl text-green-material">{{data.progressIcon}}</i>
+        </div>
+        <div class="flex items-center justify-center">
+            <!-- The upload process would be taken a little time. Please wait... -->
+            <div>{{data.progressMsg}}</div>
+        </div>
+        <div class="mt-4 mb-4">
+            <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+        </div>
+    </div>
+    <div *ngIf="!data.isProcessed" class="">
+        <div class="flex items-center justify-center mb-4">
+            <i class="material-icons text-8xl text-green-material">check_circle_outline</i>
+        </div>
+        <div class="flex items-center justify-center">
+            <div>{{data.doneMsg}}</div>
+        </div>
+    </div>
+</div>
